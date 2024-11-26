@@ -1,14 +1,16 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const router = require('./routes/router');
+const cors = require('cors');
 const app = express();
 require('dotenv').config();
 
 const port = process.env.APP_PORT ? process.env.APP_PORT : '3000';
 
 app.use(bodyParser.json());
+app.use(cors);
 
-app.use(router);
+app.use('/', router);
 
 app.use(function(req, res, next) {
     res.status(404).json({
