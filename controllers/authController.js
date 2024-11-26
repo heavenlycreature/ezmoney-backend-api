@@ -13,7 +13,7 @@ const generateToken = (user) => {
       },
       process.env.JWT_SECRET,
       {
-        expiresIn: "1h",
+        expiresIn: "30d",
       }
     );
   };
@@ -65,7 +65,7 @@ const login = async (req, res) => {
    
     const userQuery = await userCollection.where('email', '==', email).get(); 
     if (userQuery.empty) {
-      return res.status(401).json({ message: 'Invalid Credentials' });
+      return res.status(401).json({ message: 'Data tidak cocok!, coba login ulang!' });
     }
     
     try {
@@ -74,7 +74,7 @@ const login = async (req, res) => {
         const isPasswordValid = await bcrypt.compare(password, userData.password);
        
         if (!isPasswordValid) {
-            return res.status(401).json({ message: 'Invalid Credentials' });
+            return res.status(401).json({ message: 'Data tidak cocok!, coba login ulang!' });
           }
 
           const token = generateToken({ 
