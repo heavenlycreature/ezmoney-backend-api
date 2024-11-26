@@ -1,5 +1,5 @@
 
-# Backend API Documentation
+# EZMoney Backend API Documentation
 
 This documentation provides detailed information about the API endpoints, their methods, request/response formats, and functionality.
 
@@ -69,7 +69,7 @@ This documentation provides detailed information about the API endpoints, their 
 
 ### **4. Send Financial Data**
 - **Method:** `POST`  
-- **Endpoint:** `/financial-data`
+- **Endpoint:** `/:userId/transactions`
 
 #### **Request Body**
 ```json
@@ -101,7 +101,7 @@ This documentation provides detailed information about the API endpoints, their 
 
 ### **5. List Transactions by Month**
 - **Method:** `GET`  
-- **Endpoint:** `/transactions`
+- **Endpoint:** `/:useId/transactions/:month?limit=[YYYY-MM format month]&lastDoc=[documentId]`
 
 #### **Response**
 ```json
@@ -133,7 +133,7 @@ This documentation provides detailed information about the API endpoints, their 
 ## **Setup Instructions**
 
 ### Prerequisites
-- Node.js >= 16.x
+- Node.js >= 20.x
 - Docker (optional for containerized deployment)
 
 ### Installation
@@ -149,7 +149,6 @@ This documentation provides detailed information about the API endpoints, their 
 3. Set up environment variables in a `.env` file:
    ```plaintext
    APP_PORT=3000
-   DATABASE_URL=<your-database-url>
    JWT_SECRET=<your-secret-key>
    ```
 
