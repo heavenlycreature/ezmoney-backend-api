@@ -8,7 +8,7 @@ require('dotenv').config();
 const port = process.env.APP_PORT ? process.env.APP_PORT : '3000';
 
 app.use(bodyParser.json());
-app.use(cors);
+app.use(cors());
 
 app.use('/', router);
 

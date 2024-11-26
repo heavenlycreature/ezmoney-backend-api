@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const db = new Firestore({
     projectId: 'capstone-ezmoney-service-app',
-    keyFilename: process.env.FIRESTORE_CREDENTIALS
+    keyFilename: "./firestore-admin.json"
 });
 
 const userCollection = db.collection('users');

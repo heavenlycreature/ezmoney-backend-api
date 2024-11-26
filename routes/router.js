@@ -4,6 +4,12 @@ const validateToken = require('../middleware/userMiddleware');
 const {saveUserWallet, getUserMonthlyTransactions} = require('../controllers/savingController');
 const router = express.Router();
 
+router.get('/', (req, res) => {
+    res.status(200).json({
+        "message": "selamat kamu berhasil ter connect ke api"
+    });
+});
+
 router.post('/signup', signup);
 router.post('/login', login);
 router.post('/logout', logout);
