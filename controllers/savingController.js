@@ -1,7 +1,7 @@
 const { userCollection } = require('../config/database');
 
 const saveUserWallet = async (req, res) => {
-    const { userId } = req.user;
+    const { userId } = req.params;
     const { income, expenses, catIncome, catExpenses } = req.body;
     const date = new Date();
     const monthYear = date.toISOString().slice(0, 7);
@@ -11,6 +11,13 @@ const saveUserWallet = async (req, res) => {
         return res.status(400).json({
             success: false,
             message: 'Tolong input pemasukan/pengeluaran yang jelas'
+        });
+    }
+
+    if (userId !== req.user.userId) {
+        return res.status(403).json({
+            success: false,
+            message: 'Unauthorized access'
         });
     }
 
