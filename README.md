@@ -101,7 +101,7 @@ This documentation provides detailed information about the API endpoints, their 
 
 ### **5. List Transactions by Month**
 - **Method:** `GET`  
-- **Endpoint:** `/:useId/transactions/:month?limit=[YYYY-MM format month]&lastDoc=[documentId]`
+- **Endpoint:** `/:useId/transactions/:month?limit=[number]&lastDoc=[documentId]` [YYYY-MM format month]
 
 #### **Response**
 ```json
