@@ -9,7 +9,7 @@ This documentation provides detailed information about the API endpoints, their 
 
 ### **1. User Registration**
 - **Method:** `POST`  
-- **Endpoint:** `/register`
+- **Endpoint:** `/signup`
 
 #### **Request Body**
 ```json
