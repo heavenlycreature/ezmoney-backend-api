@@ -172,6 +172,50 @@ https://your-api-domain.com/api
   - 404: No transactions found
   - 500: Server error
 
+### 5. Get All List Transactions By Type
+- **Endpoint:** `/transactions/:userId/:month?type=[income || expenses]`
+- **Method:** `GET`
+- **Authorization:** Required
+- **Query Parameters:**
+  - `type` (required): List of transactions type transaction
+- **URL Parameters:**
+  - `month`: Month in YYYY-MM format (e.g., 2024-11)
+- **Success Response:**
+  ```json
+  {
+    "success": true,
+    "data": {
+      "summary": {
+        "month": "string",
+        "totalIncome": "number",
+        "totalExpenses": "number",
+        "balance": "number",
+        "saving": "number",
+        "recommendedSavings": "number",
+        "lastUpdated": "ISO date string"
+      },
+      "transactions": [
+        {
+          "id": "string",
+          "type": "string",
+          "category": "string",
+          "subCategory": "string",
+          "amount": "number",
+          "note": "string",
+          "saving": "string",
+          "date": "ISO date string"
+        }
+      ],
+      "lastDoc": "string" // Last transaction ID for pagination
+    }
+  }
+  ```
+- **Error Responses:**
+  - 400: Invalid month format
+  - 401: Authentication error
+  - 404: No transactions found
+  - 500: Server error
+
 ### 6. Update Saving Recommendation
 - **Endpoint:** `/transactions/:userId/update-saving`
 - **Method:** `PUT`
