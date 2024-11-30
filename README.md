@@ -206,7 +206,7 @@ https://your-api-domain.com/api
           "date": "ISO date string"
         }
       ],
-      "lastDoc": "string" // Last transaction ID for pagination
+      "totalTransactions": "number" // List of transaction by query 
     }
   }
   ```
