@@ -331,10 +331,3 @@ https://your-api-domain.com/api
 
 ## **Contributing**
 Feel free to contribute by submitting issues or pull requests. Ensure proper formatting and documentation for all code submissions.
-
----
-
-## **License**
-This project is licensed under the MIT License.
-
----
