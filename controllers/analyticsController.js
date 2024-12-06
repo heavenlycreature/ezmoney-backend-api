@@ -33,7 +33,10 @@ async function getFinancialTrend(req, res) {
 
     const monthSnapshot = await monthDocRef.get();
     const monthData = monthSnapshot.data() || {};
-    const records = monthData.records || [];
+    const recordsRef = monthDocRef.collection('records');
+    const recordSnapshot = await recordsRef.get();
+    const records = recordSnapshot.docs.map(doc => doc.data()) || [];
+    console.log(records);
 
     const incomeData = transformRecords(records, 'income');
     const expensesData = transformRecords(records, 'expenses');
@@ -175,51 +178,10 @@ async function getMonthlyFinancialSummary(req, res) {
   }
 }
 
-/**
- * Get multi-month financial trend
- */
-async function getMultiMonthTrend(req, res) {
-  try {
-    const { userId } = req.params;
-    const { startMonth, endMonth } = req.query;
-
-    const transactionsRef = db
-      .collection('users')
-      .doc(userId)
-      .collection('transactions');
-
-    const query = transactionsRef
-      .where('month', '>=', startMonth)
-      .where('month', '<=', endMonth);
-
-    const snapshot = await query.get();
-    const monthlyData = snapshot.docs.map(doc => ({
-      month: doc.id,
-      ...doc.data(),
-    }));
-
-    const multiMonthTrend = monthlyData.map(monthData => ({
-      month: monthData.month,
-      totalIncome: monthData.totalIncome || 0,
-      totalExpenses: monthData.totalExpenses || 0,
-      netCashFlow: (monthData.totalIncome || 0) - (monthData.totalExpenses || 0),
-      savings: monthData.saving || 0,
-    }));
-
-    res.status(200).json(multiMonthTrend);
-  } catch (error) {
-    console.error('Multi-Month Trend Error:', error);
-    res.status(500).json({
-      message: 'Failed to retrieve multi-month financial trend',
-      error: error.message,
-    });
-  }
-}
 
 module.exports = {
   getFinancialTrend,
   getIncomeDistribution,
   getExpensesDistribution,
   getMonthlyFinancialSummary,
-  getMultiMonthTrend,
 };

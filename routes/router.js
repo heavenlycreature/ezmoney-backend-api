@@ -27,7 +27,5 @@ router.get('/analytics/financial-trend/:userId/:month', validateToken, getFinanc
 router.get('/analytics/income-distribution/:userId/:month', validateToken, getIncomeDistribution);
 router.get('/analytics/expenses-distribution/:userId/:month', validateToken, getExpensesDistribution);
 router.get('/analytics/monthly-summary/:userId/:month', validateToken, getMonthlyFinancialSummary);
-router.get('/analytics/multi-month-trend/:userId', validateToken, getMultiMonthTrend);
-
 
 module.exports = router;
