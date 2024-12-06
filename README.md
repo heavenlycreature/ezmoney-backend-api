@@ -266,6 +266,145 @@ https://your-api-domain.com/api
   - 404: Transaction or user not found
   - 403: Unauthorized access
   - 500: Server error
+ 
+### 8. Get Financial Trend
+
+Retrieve a user's financial trend for a specific month, including income, expenses, savings, and net cash flow.
+
+**Route**:  
+```
+GET /analytics/financial-trend/:userId/:month
+```
+
+**Request Parameters**:  
+| Parameter | Type   | Description                 |
+|-----------|--------|-----------------------------|
+| `userId`  | String | ID of the user.             |
+| `month`   | String | Month in `YYYY-MM` format.  |
+
+**Response**:  
+- **Status Code**: `200 OK`  
+- **Body**:
+```json
+{
+  "income": [
+    {
+      "date": "2024-12-02T12:21:53.023Z",
+      "amount": 200000,
+      "category": "transport",
+      "subCategory": "mabuk"
+    }
+  ],
+  "expenses": [
+    {
+      "date": "2024-12-03T14:11:02.023Z",
+      "amount": 50000,
+      "category": "food",
+      "subCategory": "snack"
+    }
+  ],
+  "savings": 40,
+  "totalIncome": 2250000,
+  "totalExpenses": 700000,
+  "netCashFlow": 1550000
+}
+```
+
+---
+
+### 9. Get Income Distribution
+
+Retrieve the distribution of income by category for a specific month.
+
+**Route**:  
+```
+GET /analytics/income-distribution/:userId/:month
+```
+
+**Request Parameters**:  
+| Parameter | Type   | Description                 |
+|-----------|--------|-----------------------------|
+| `userId`  | String | ID of the user.             |
+| `month`   | String | Month in `YYYY-MM` format.  |
+
+**Response**:  
+- **Status Code**: `200 OK`  
+- **Body**:
+```json
+{
+  "categories": ["salary", "bonus"],
+  "amounts": [2000000, 250000],
+  "totalIncome": 2250000
+}
+```
+
+---
+
+### 10. Get Expenses Distribution
+
+Retrieve the distribution of expenses by category for a specific month.
+
+**Route**:  
+```
+GET /analytics/expenses-distribution/:userId/:month
+```
+
+**Request Parameters**:  
+| Parameter | Type   | Description                 |
+|-----------|--------|-----------------------------|
+| `userId`  | String | ID of the user.             |
+| `month`   | String | Month in `YYYY-MM` format.  |
+
+**Response**:  
+- **Status Code**: `200 OK`  
+- **Body**:
+```json
+{
+  "categories": ["food", "transport"],
+  "amounts": [400000, 300000],
+  "totalExpenses": 700000
+}
+```
+
+---
+
+### 11. Get Monthly Financial Summary
+
+Retrieve a monthly financial summary including total income, total expenses, and a breakdown by category.
+
+**Route**:  
+```
+GET /analytics/monthly-summary/:userId/:month
+```
+
+**Request Parameters**:  
+| Parameter | Type   | Description                 |
+|-----------|--------|-----------------------------|
+| `userId`  | String | ID of the user.             |
+| `month`   | String | Month in `YYYY-MM` format.  |
+
+**Response**:  
+- **Status Code**: `200 OK`  
+- **Body**:
+```json
+{
+  "totalIncome": 2250000,
+  "totalExpenses": 700000,
+  "netCashFlow": 1550000,
+  "savings": 40,
+  "recommendedSavings": 450000,
+  "incomeBreakdown": {
+    "categories": ["salary", "bonus"],
+    "amounts": [2000000, 250000]
+  },
+  "expensesBreakdown": {
+    "categories": ["food", "transport"],
+    "amounts": [400000, 300000]
+  }
+}
+```
+
+---
 
 ## Authentication Flow
 1. Register a new user
