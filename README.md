@@ -173,7 +173,7 @@ https://your-api-domain.com/api
   - 500: Server error
 
 ### 5. Get All List Transactions By Type
-- **Endpoint:** `/transactions/:userId/:month?type=[income || expenses]`
+- **Endpoint:** `/transactions/list/:userId/:month?type=[income || expenses]`
 - **Method:** `GET`
 - **Authorization:** Required
 - **Query Parameters:**
