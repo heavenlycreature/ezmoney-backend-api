@@ -118,6 +118,8 @@ https://your-api-domain.com/api
       "type": "string",
       "category": "string",
       "amount": "number",
+      "savingBalance": "number",
+      "savingRate": "number",
       "currentBalance": "number",
       "recommendedSavings": "number"
     }
@@ -234,6 +236,7 @@ https://your-api-domain.com/api
     "data": {
       "saving": "number",
       "recommendedSavings": "number"
+      "savingRate": "number"
     }
   }
   ```
@@ -257,7 +260,9 @@ https://your-api-domain.com/api
       "updatedSummary": {
         "totalIncome": "number",
         "totalExpenses": "number",
-        "balance": "number"
+        "balance": "number",
+        "savingBalance": "number",
+        "savingRate": "number",
       }
     }
   }
